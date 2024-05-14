@@ -2,7 +2,7 @@
 title: sort cmp函数与结构体排序应用
 published: 2024-05-07
 description: First blog published on Luogu OJ.
-image: 
+image: /images/cover.jpg
 tags: [OI]
 category: Front-end
 draft: false
