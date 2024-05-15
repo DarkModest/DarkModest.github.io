@@ -74,7 +74,7 @@ export const profileConfig: ProfileConfig = {
     },
     {
       name: 'Luogu',
-      icon: 'icons/luogu.jpg',
+      icon: 'icons/luogu.png',
       url: 'https://www.luogu.com.cn/user/1038410',
     },
 
