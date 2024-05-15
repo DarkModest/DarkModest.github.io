@@ -72,6 +72,12 @@ export const profileConfig: ProfileConfig = {
       icon: 'fa6-brands:github',
       url: 'https://github.com/darkmodest',
     },
+    {
+      name: 'Luogu',
+      icon: 'icons/luogu.jpg',
+      url: 'https://www.luogu.com.cn/user/1038410',
+    },
+
   ],
 }
 
