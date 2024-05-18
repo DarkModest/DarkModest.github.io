@@ -1,6 +1,6 @@
 **# Dark_Modest**
 > Nation: China  
-> School: Yangzhou High School Of Jiangsu Province
+> School: Yangzhou High School Of Jiangsu Province  
 ::github{repo="darkmodest/darkmodest"}
 **# About**
 
