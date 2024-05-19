@@ -1,3 +1,11 @@
+---
+title: ABC354 C - Atcoder Magics 题解
+published: 2024-05-19
+description: First solution published on Luogu OJ.
+tags: [OI]
+category: Notes
+draft: false
+---
 # ABC354 C - Atcoder Magics
 ## 题目翻译
 ### 问题陈述
