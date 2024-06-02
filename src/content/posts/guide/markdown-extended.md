@@ -1,8 +1,7 @@
 ---
 title: Markdown Extended Features
-published: 2024-05-01
+published: 2023-08-01
 description: 'Read more about Markdown features in Fuwari'
-image: ''
 category: Guides
 draft: false 
 ---

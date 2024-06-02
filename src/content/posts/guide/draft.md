@@ -1,6 +1,6 @@
 ---
 title: Draft Example
-published: 2022-07-01
+published: 2023-08-01
 category: Examples
 draft: true
 ---
