@@ -4,7 +4,7 @@ published: 2024-05-07
 description: First blog published on Luogu OJ.
 tags: [OI]
 category: Notes
-draft: false
+draft: 
 ---
 # 起因
 补[ABC348C](https://www.luogu.com.cn/problem/AT_abc348_c)中，发现：
