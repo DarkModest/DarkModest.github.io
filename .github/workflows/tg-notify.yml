@@ -13,7 +13,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           # See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
           message: |
-            **Dark_Modest has updated his blog!** 🎉
+            Dark_Modest has updated his blog! 🎉
 
             Repository: ${{ github.repository }}
             Commit: ${{ github.event.commits[0].message }}
