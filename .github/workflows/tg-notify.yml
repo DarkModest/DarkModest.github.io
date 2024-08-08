@@ -16,6 +16,6 @@ jobs:
             **Dark_Modest has updated his blog!** 🎉
 
             Repository: ${{ github.repository }}
-            Commit message: ${{ github.event.commits[0].message }}
+            Commit: ${{ github.event.commits[0].message }} | ${{github.sha}}
 
             Please Check the Website: https://darkmodest.github.io/
