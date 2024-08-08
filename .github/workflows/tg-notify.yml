@@ -11,10 +11,11 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
+          # See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
           message: |
-            ${{ github.actor }} created commit:
-            Commit message: ${{ github.event.commits[0].message }}
-            
+            **Dark_Modest has updated his blog!**🎉
+
             Repository: ${{ github.repository }}
-            
-            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            Commit message: ${{ github.event.commits[0].message }}
+
+            Please Check the Website: https://darkmodest.github.io/
