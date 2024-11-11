@@ -6,6 +6,7 @@ tags: [OI]
 category: Notes
 draft: false
 ---
+<!--最完整的front matter. 可以当做模板-->
 # 起因
 补[ABC348C](https://www.luogu.com.cn/problem/AT_abc348_c)中，发现：
 1. 开二维数组空间时间双爆;
