@@ -40,7 +40,7 @@
 
    如此操作 $n - 1$ 次，就可以得到一个恰好有 $n$ 个叶子的二叉树，每个非叶子节点刚好有两个儿子。这棵树就是 Kruskal 重构树。
 
-   ![由P2245样例得到的Kruskal重构树](C:\Users\Administrator\Desktop\image-20241123170958104.png)
+   ![由P2245样例得到的Kruskal重构树](.image-20241123170958104.png)
 
 
 
