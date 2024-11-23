@@ -22,6 +22,20 @@ draft: false
 
 [P3366 【模板】最小生成树](https://www.luogu.com.cn/problem/P3366)
 
+```cpp
+void kruskal(){
+	sort(e + 1, e + m + 1, cmp); //按边权排序
+	for(int i = 1; i <= m; i++){
+		int u = f(e[i].u), v = f(e[i].v); 
+		if(u == v) continue; //如果连通则不对最小生成树产生贡献，忽略
+		ans += e[i].w; 
+		unity(u, v); //并入同一集合
+		cnt++;
+		if(cnt == n - 1) break;
+	}
+}
+```
+
 #### 例一 [HDU7226](https://acm.hdu.edu.cn/showproblem.php?pid=7226)
 
 边的上界小于 $n$。
@@ -148,23 +162,27 @@ int find(int x) {
 }
 ```
 
-# 模拟赛
+# 模拟赛 图论专项（二）
+
+$$10 /400$$
 
 ## T1 [P7991 [USACO21DEC] Connecting Two Barns S](https://www.luogu.com.cn/problem/P7991)
 
-用**并查集**维护不加边时会有几个连通块、每个点在哪一个连通块。
+用**并查集**维护不加边时会有几个连通块、每个点在哪一个连通块。用 $f_i$ 来表示 $i$ 所在的连通块的代表点。代表点即为这个连通块在并查集中的祖先。
 
-用 $f_i$ 来表示 $i$ 所在的连通块的代表点。代表点即为这个连通块在并查集中的祖先。
+如果只有一个连通块，那么`ans = 0`；如果有两个连通块，那么`ans = 1`；
 
-如果只有一个连通块，那么`ans = 0`；
+如果有大于两个连通块，那么题目将被转化为，通过除了 $f_i$ 和 $f_n$ 的某一个连通块来连接。对于每一个连通块 $f_i$，计算其最小代价，维护 `ans`。
 
-如果有两个连通块，那么`ans = 1`；
+可以用二分答案优化。对于每一个点 $i$，`upper_bound` 查找 $f_1$ 与 $f_n$ 中离点 $i$ 最近的点，然后分别遍历连通块中的点，维护最小值。
 
-如果有大于两个连通块，那么题目将被转化为，通过除了 $f_i$ 和 $f_n$ 的某一个连通块来连接。
-
-对于每一个连通块 $f_i$，计算其最小代价，
+[Complete Code](https://www.luogu.com.cn/record/190698478)
 
 ## T2 [P8191 [USACO22FEB] Moo Network G](https://www.luogu.com.cn/problem/P8191)
+
+观察到 $1 <= y <= 10$，暴力建边 + Kruskal。
+
+[Complete Code](https://www.luogu.com.cn/record/190726088)
 
 ## T3 [P7528 [USACO21OPEN] Portals G](https://www.luogu.com.cn/problem/P7528)
 
