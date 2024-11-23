@@ -1,4 +1,10 @@
-#  模拟赛 图论专项（二）
+---
+title: YZZX 集训笔记 Day2
+published: 2024-11-23
+tags: [OI, 扬中集训]
+category: Notes
+draft: false
+---
 
 # 算法
 
