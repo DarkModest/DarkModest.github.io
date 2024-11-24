@@ -114,11 +114,6 @@ void tarjan(int x, int diff){
 #### 例二 [P2227 [HNOI2001] 洗牌机](https://www.luogu.com.cn/problem/P2227)
 
 
-
-## 最近公共祖先 LCA
-
-
-
 ## 并查集
 
 例题 [P1536 村村通](https://www.luogu.com.cn/problem/P1536)
