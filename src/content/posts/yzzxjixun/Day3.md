@@ -62,7 +62,7 @@ int lowbit(x){
 
 [[ABC333D] Erase Leaves](https://www.luogu.com.cn/problem/AT_abc333_d)
 
-
+[Complete Code](https://www.luogu.com.cn/record/191121844)
 
 
 
@@ -70,9 +70,9 @@ int lowbit(x){
 
 [P2014 [CTSC1997] 选课](https://www.luogu.com.cn/problem/P2014)
 
-[P1122 最大子树和](https://www.luogu.com.cn/problem/P1122)
+[P1122 最大子树和](https://www.luogu.com.cn/problem/P1122) [Code](https://www.luogu.com.cn/record/191134255)
 
-[P1352 没有上司的舞会](https://www.luogu.com.cn/problem/P1352)
+[P1352 没有上司的舞会](https://www.luogu.com.cn/problem/P1352) [Code](https://www.luogu.com.cn/record/173638206)
 
 模板：
 
@@ -105,9 +105,7 @@ int dfs(int u){
 
 [Complete Code](https://www.luogu.com.cn/record/190942546)
 
-## [[ABC348E] Minimize Sum of Distances](https://www.luogu.com.cn/problem/AT_abc348_e)
-
-换根DP。
+## [P3000 [USACO10DEC] Cow Calisthenics G](https://www.luogu.com.cn/problem/P3000)
 
 要求求最大直径最小，用二分答案求直径。
 
@@ -135,9 +133,9 @@ void dfs(int u, int fa, int lim){
 
 [Complete Code](https://www.luogu.com.cn/record/190956093)
 
-## [P3000 [USACO10DEC] Cow Calisthenics G](https://www.luogu.com.cn/problem/P3000)
+## [[ABC348E] Minimize Sum of Distances](https://www.luogu.com.cn/problem/AT_abc348_e)
 
-树上二分
+换根DP。
 
 ## [P6869 [COCI2019-2020#5] Putovanje](https://www.luogu.com.cn/problem/P6869)
 
