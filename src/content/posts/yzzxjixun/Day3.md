@@ -1,3 +1,11 @@
+---
+title: YZZX 集训笔记 Day3
+published: 2024-11-24
+tags: [OI, 扬中集训]
+category: Notes
+draft: false
+---
+
 # 树上问题
 
 ## 树的直径

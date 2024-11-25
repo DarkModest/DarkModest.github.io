@@ -1,3 +1,11 @@
+---
+title: YZZX 集训笔记 Day4
+published: 2024-11-25
+tags: [OI, 扬中集训]
+category: Notes
+draft: false
+---
+
 # 模拟赛
 
 ## 植物收集
