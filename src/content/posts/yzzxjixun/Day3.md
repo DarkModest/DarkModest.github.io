@@ -60,19 +60,15 @@ int lowbit(x){
 
 ## 树上贪心
 
-[[ABC333D] Erase Leaves](https://www.luogu.com.cn/problem/AT_abc333_d)
-
-[Complete Code](https://www.luogu.com.cn/record/191121844)
-
-
+[[ABC333D] Erase Leaves](https://www.luogu.com.cn/problem/AT_abc333_d) [Code](https://www.luogu.com.cn/record/191121844)
 
 ## 树形 DP
 
 [P2014 [CTSC1997] 选课](https://www.luogu.com.cn/problem/P2014)
 
-[P1122 最大子树和](https://www.luogu.com.cn/problem/P1122) [Code](https://www.luogu.com.cn/record/191134255)
+[P1122 最大子树和](https://www.luogu.com.cn/problem/P1122)
 
-[P1352 没有上司的舞会](https://www.luogu.com.cn/problem/P1352) [Code](https://www.luogu.com.cn/record/173638206)
+[P1352 没有上司的舞会](https://www.luogu.com.cn/problem/P1352)
 
 模板：
 
@@ -85,6 +81,55 @@ int dfs(int u){
         if(vis[to]) continue;
         dfs(to);
         //孩子->父亲，转移状态
+    }
+}
+```
+
+## 换根DP
+
+又叫二次扫描。
+
+相比于一般的树形 DP：
+
+- 以树上不同点为根，其解不同。
+- 求解答案需要求解每个节点的信息。
+- 无法通过一次搜索完成答案求解。
+- 难度比一般树形 DP 要高。
+
+[P3478 [POI2008] STA-Station](https://www.luogu.com.cn/problem/P3478)
+
+>给定一个 $n$ 个点的无根树，问以树上哪个节点为根时，其所有节点的深度之和最大？
+
+如果以每个节点为根依次搜索一遍，时间复杂度为 $O(n^2)$。
+
+考虑在第二次搜索时完成所有答案的统计。
+
+- 第一次搜索，假设根节点为 $1$ 号节点，则此时只有 $1$ 号节点的答案已知。搜索过程中也需要**统计出所有子树的大小**。
+
+- 第二次搜索，依然从 $1$ 号节点出发，如果 $1$ 号节点与 $x$ 节点相连，则考虑能否通过 $1$ 号节点的答案推出 $x$ 节点的答案。
+- 假设此时根节点**换**为节点 $x$，此时子树由两部分构成，第一部分是原子树，第二部分是 $1$ 号节点的其它子树。![img](https://pic3.zhimg.com/v2-0f457add2a7272028a19d640ba073058_1440w.jpg)
+- 根节点从 $1$ 号节点变为节点 $x$ 的过程中，可以发现，第一部分深度降低了 $1$，第二部分深度增大了 $1$。
+- 现在，可以通过第一次搜索得到的节点数量得出递推公式：
+
+$$ans[to] = ans[u] - siz[to] + (siz[1] - siz[to]), fa[to] = u$$
+
+```cpp
+void dfs(int u, int fa){
+    dep[u] = dep[fa] + 1;
+    dis[u]++;
+    for(int i = head[u]; i; i = e[i].nxt){
+        int to = e[i].to;
+        if(to == fa) continue;
+        dfs(to, u);
+        dis[u] += dis[to];
+    }
+}
+void dfs2(int u, int fa){
+    for(int i = head[u]; i; i = e[i].nxt){
+        int to = e[i].to;
+        if(to == fa) continue;
+        ans[to] = ans[u] - dis[to] + (dis[1] - dis[to]);
+        dfs2(to, u);
     }
 }
 ```
@@ -105,7 +150,9 @@ int dfs(int u){
 
 [Complete Code](https://www.luogu.com.cn/record/190942546)
 
-## [P3000 [USACO10DEC] Cow Calisthenics G](https://www.luogu.com.cn/problem/P3000)
+## [[ABC348E] Minimize Sum of Distances](https://www.luogu.com.cn/problem/AT_abc348_e)
+
+换根DP。
 
 要求求最大直径最小，用二分答案求直径。
 
@@ -133,9 +180,9 @@ void dfs(int u, int fa, int lim){
 
 [Complete Code](https://www.luogu.com.cn/record/190956093)
 
-## [[ABC348E] Minimize Sum of Distances](https://www.luogu.com.cn/problem/AT_abc348_e)
+## [P3000 [USACO10DEC] Cow Calisthenics G](https://www.luogu.com.cn/problem/P3000)
 
-换根DP。
+树上二分
 
 ## [P6869 [COCI2019-2020#5] Putovanje](https://www.luogu.com.cn/problem/P6869)
 
@@ -146,3 +193,5 @@ void dfs(int u, int fa, int lim){
 [树的直径 - OI Wiki](https://oi-wiki.org/graph/tree-diameter/)
 
 [题解 P3000 [USACO10DEC]Cow Calisthenics G - 青鸟_Blue_Bird](https://www.luogu.com.cn/article/ny50jzze)
+
+[【朝夕的ACM笔记】动态规划-换根DP - 知乎](https://zhuanlan.zhihu.com/p/348349531)
