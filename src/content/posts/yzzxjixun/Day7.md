@@ -1,6 +1,6 @@
 ---
-title: YZZX 集训笔记 Day4
-published: 2024-11-25
+title: YZZX 集训笔记 Day7
+published: 2024-11-28
 tags: [OI]
 category: Notes
 draft: false
