@@ -2,7 +2,7 @@
 title: ABC367 E - Permute K times 题解
 published: 2024-08-18
 description: First E Accepted; Binary Lifting Classic Problem.
-tags: [OI, 常州一中集训]
+tags: [OI]
 category: Notes
 draft: false
 ---

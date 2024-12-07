@@ -1,7 +1,7 @@
 ---
 title: YZZX 集训笔记 Day1
 published: 2024-11-22
-tags: [OI, 扬中集训]
+tags: [OI]
 category: Notes
 draft: false
 ---
