@@ -1,9 +1,13 @@
 ---
 title: 政治选必一 35 条速记
 published: 2025-04-21
+tags: [Politics]
 category: Notes
 draft: false
 ---
+
+> from https://www.bilibili.com/video/BV1nC411J71E
+
 # 一. 政治多极化
 
 ## 主题关系决国力

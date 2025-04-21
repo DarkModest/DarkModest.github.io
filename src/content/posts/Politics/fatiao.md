@@ -1,6 +1,7 @@
 ---
 title: 法条
 published: 2025-04-10
+tags: [Politics]
 category: Notes
 draft: false
 ---
