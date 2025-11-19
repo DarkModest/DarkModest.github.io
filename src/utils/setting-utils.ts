@@ -1,20 +1,21 @@
-import type { LIGHT_DARK_MODE } from "@/types/config";
 import {
 	AUTO_MODE,
 	DARK_MODE,
 	DEFAULT_THEME,
 	LIGHT_MODE,
 } from "@constants/constants.ts";
+import { expressiveCodeConfig } from "@/config";
+import type { LIGHT_DARK_MODE } from "@/types/config";
 
 export function getDefaultHue(): number {
 	const fallback = "250";
 	const configCarrier = document.getElementById("config-carrier");
-	return Number.parseInt(configCarrier?.dataset.hue || fallback);
+	return Number.parseInt(configCarrier?.dataset.hue || fallback, 10);
 }
 
 export function getHue(): number {
 	const stored = localStorage.getItem("hue");
-	return stored ? Number.parseInt(stored) : getDefaultHue();
+	return stored ? Number.parseInt(stored, 10) : getDefaultHue();
 }
 
 export function setHue(hue: number): void {
@@ -42,6 +43,12 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 			}
 			break;
 	}
+
+	// Set the theme for Expressive Code
+	document.documentElement.setAttribute(
+		"data-theme",
+		expressiveCodeConfig.theme,
+	);
 }
 
 export function setTheme(theme: LIGHT_DARK_MODE): void {
