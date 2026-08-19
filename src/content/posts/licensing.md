@@ -5,4 +5,8 @@ description: Introduction to Open source licensing.
 category: Notes
 draft: false
 ---
-# WIP
+# Apache Licence
+
+## 条件
+
+- 
