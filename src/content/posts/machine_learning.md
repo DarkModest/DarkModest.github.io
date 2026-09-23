@@ -1,6 +1,6 @@
 ---
 title: 机器学习 笔记
-published: 2026-9-23
+published: 2026-09-23
 description: Notes about machine learning.
 category: Notes
 draft: false
