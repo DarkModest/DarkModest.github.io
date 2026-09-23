@@ -14,26 +14,60 @@ permissions:
   pages: write
   id-token: write
 
+# Pages 同一时间只接受一个部署。不取消进行中的部署，
+# 否则可能把线上留在一个部署到一半的状态。
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: Build site
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v2
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # 刻意不传 version：让 pnpm 从 package.json 的 packageManager
+      # （pnpm@9.14.4）取版本，与 .npmrc 的 manage-package-manager-versions
+      # 一致。传 pnpm@latest 会让 setup-node 缓存记录的 store 路径与实际
+      # 安装写入的路径不一致，导致收尾的 cache-save 报错、整个 job 失败。
+      - name: Setup pnpm
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
         with:
-          path: . # 存储库中 Astro 项目的根位置。（可选）
-          node-version: 22.13.0 # 用于构建站点的特定 Node.js 版本，默认为 20。（可选）
-          package-manager: pnpm@latest # 应使用哪个 Node.js 包管理器来安装依赖项和构建站点。会根据存储库中的 lockfile 自动检测。（可选）
+          run_install: false
+
+      # 必须排在 Checkout 之后：cache 需要读取已存在的 pnpm-lock.yaml
+      - name: Setup Node.js
+        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 用 package.json 的 build 脚本（astro build && pagefind --site dist），
+      # 保证部署的产物和 CI 验证过的完全一致
+      - name: Build
+        run: pnpm build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with:
+          path: dist
 
   deploy:
+    name: Deploy
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
