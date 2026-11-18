@@ -61,7 +61,7 @@ $$
 
 $\frac{\partial J}{\partial \theta_j}$：代价函数对第 $j$ 个参数的偏导数，也就是梯度分量。
 
-> 可以理解为控制变量：当其它 $\theta$不动，变化$\theta_j$，观察其对$J$ 的影响。 
+> 可以理解为控制变量：当其它 $\theta$不动，变化$\theta_j$，观察其对$J$ 的影响。
 >
 > 如果 $\frac{\partial J}{\partial \theta_j}>0$，说明增大 $\theta_j$会让$J$增大，所以应该减小$\theta_j$；  
 > 如果 $\frac{\partial J}{\partial \theta_j}<0$，说明增大 $\theta_j$会让$J$减小，所以应该增大$\theta_j$。
@@ -171,7 +171,9 @@ $$
 
 类似单变量线性回归，在多变量线性回归中，构建一个代价函数所有**建模误差**的总和：
 
-$$J\left( {\theta_{0}},{\theta_{1}}...{\theta_{n}} \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left( h_{\theta} \left({x}^{\left( i \right)} \right)-{y}^{\left( i \right)} \right)}^{2}}}$$
+$$
+J\left( {\theta_{0}},{\theta_{1}}...{\theta_{n}} \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left( h_{\theta} \left({x}^{\left( i \right)} \right)-{y}^{\left( i \right)} \right)}^{2}}}
+$$
 
 > 多变量线性回归的代价函数中，添加一个常数$\frac 1 2$ 能使求导后的式子保持简洁，而不影响取得最小值的位置。
 
@@ -179,19 +181,23 @@ $$J\left( {\theta_{0}},{\theta_{1}}...{\theta_{n}} \right)=\frac{1}{2m}\sum\limi
 
 多变量批量梯度下降公式：
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 &\text{Repeat } \{ \\
 &\quad \theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta_0, \theta_1, ..., \theta_n) \\
 &\}
-\end{aligned}$$
+\end{aligned}
+$$
 
 代入代价函数：
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 &\text{Repeat } \{ \\
 &\quad \theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} \frac{1}{2m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2 \\
 &\}
-\end{aligned}$$
+\end{aligned}
+$$
 
 求导：
 
@@ -219,7 +225,7 @@ $$
 
 梯度下降算法收敛的迭代次数随模型变化而变化，因此我们可以先画出**迭代次数和代价的函数图像**判断模型在何处收敛。
 
-学习率不可以过小或过大，但我们无法预知合适的学习率。因此，尝试一系列不同数量级的值（例如0.001, 0.003, 0.01, 1....）可以找到一个最大的可行学习率，或使用比这个值略小的值作为学习率。
+学习率不可以过小或过大，但我们无法预知合适的学习率。因此，尝试一系列不同数量级的值（例如0.001, 0.003, 0.01, 1...）可以找到一个最大的可行学习率，或使用比这个值略小的值作为学习率。
 
 将 $\alpha$ 设为一个足够小的数可以对模型进行调试，此时如果代价变大，说明代码中有 bug。
 
@@ -273,14 +279,18 @@ $$
 其中：
 
 $$
-Cost(h_\theta(x), y) = 
-\begin{cases} 
--\log(h_\theta(x)) & \text{if } y = 1 \\ 
--\log(1 - h_\theta(x)) & \text{if } y = 0 
+Cost(h_\theta(x), y) =
+\begin{cases}
+-\log(h_\theta(x)) & \text{if } y = 1 \\
+-\log(1 - h_\theta(x)) & \text{if } y = 0
 \end{cases}
 $$
 
-可以化简为$$J\left( \theta  \right)=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}$$
+可以化简为：
+
+$$
+J\left( \theta  \right)=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}
+$$
 
 就可以使用梯度下降算法了。
 
@@ -334,19 +344,23 @@ $$
 
 2. 正则化：保留特征，减少参数的大小。
 
-由于高次项导致了过拟合，所以通过正则化降低高次项的系数就可以很好的拟合。我们要做的就是修改代价函数，在高次项系数设置惩罚。
+由于高次项导致了过拟合，所以通过正则化降低高次项的系数就可以很好的拟合。我们要做的就是修改代价函数，在高次项系数上设置惩罚。
 
 例：
 
-$$\underset{\theta }{\mathop{\min }}\,\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{\left( {{h}_{\theta }}\left( {{x}^{(i)}} \right)-{{y}^{(i)}} \right)}^{2}}+1000\theta _{3}^{2}+10000\theta _{4}^{2}]}$$
+$$
+\underset{\theta }{\mathop{\min }}\,\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{\left( {{h}_{\theta }}\left( {{x}^{(i)}} \right)-{{y}^{(i)}} \right)}^{2}}+1000\theta _{3}^{2}+10000\theta _{4}^{2}]}
+$$
 
 这样 $\theta_3$和$\theta_4$ 对预测结果的影响变小。
 
 如果特征很多，不知道要惩罚其中哪些特征，可以对所有特征进行惩罚，让代价函数最优化的软件来选择惩罚程度。
 
-$$J\left( \theta  \right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}+\lambda \sum\limits_{j=1}^{n}{\theta_{j}^{2}}]}$$
+$$
+J\left( \theta  \right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}+\lambda \sum\limits_{j=1}^{n}{\theta_{j}^{2}}]}
+$$
 
-其中 $\lambda$ 称为正则化参数。一般不对 $\theta_0$ 处罚。如果 $\lambda$ 过大，会导致所有的 $\theta$ 过小，以至于趋近于零，导致欠拟合。
+其中 $\lambda$ 称为正则化参数。一般不对 $\theta_0$ 惩罚。如果 $\lambda$ 过大，会导致所有的 $\theta$ 过小，以至于趋近于零，导致欠拟合。
 
 ## 正则化线性回归
 
@@ -364,7 +378,7 @@ $$J\left( \theta  \right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{({h_\theta}({{x}^
 
 1. 输入层：由输入单元组成，负责输入原始数据
 
-2. 隐藏层（Hidden Layer**s**）：负责处理数据并传递到下一层
+2. 隐藏层（Hidden Layers）：负责处理数据并传递到下一层
 
 3. 输出层：计算 $h_\theta(x)$。
 
