@@ -5,6 +5,7 @@ import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-s
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import swup from "@swup/astro";
 import expressiveCode from "astro-expressive-code";
+import mermaid from "astro-mermaid";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -23,6 +24,7 @@ import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
+import { mermaidThemeCSS, mermaidThemeVariables } from "./src/plugins/mermaid-theme.js";
 
 // https://astro.build/config
 export default defineConfig({
@@ -101,6 +103,27 @@ export default defineConfig({
 		}),
         svelte(),
 		sitemap(),
+		mermaid({
+			// 只用 base 主题：它是 mermaid 唯一可定制的主题。
+			theme: "base",
+			// Fuwari 用 <html class="dark"> 而不是 data-theme 属性，
+			// 且配色由 CSS 变量驱动、切换时无需重渲染，所以关掉它的自动换主题。
+			autoTheme: false,
+			mermaidConfig: {
+				startOnLoad: false,
+				securityLevel: "loose",
+				fontFamily: "inherit",
+				fontSize: 13,
+				themeVariables: mermaidThemeVariables,
+				themeCSS: mermaidThemeCSS,
+				flowchart: {
+					curve: "basis",
+					nodeSpacing: 36,
+					rankSpacing: 52,
+					padding: 12,
+				},
+			},
+		}),
 	],
 	markdown: {
 		remarkPlugins: [

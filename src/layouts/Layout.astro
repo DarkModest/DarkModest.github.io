@@ -565,3 +565,39 @@ if (window.swup) {
 	document.addEventListener("swup:enable", setup)
 }
 </script>
+
+<script>
+	// Mermaid：把渲染出的 svg 还原成 viewBox 的自然宽度，宽图交给容器横向滚动，
+	// 窄图由 CSS 居中。mermaid 默认写 width="100%"，在窄正文列里会把字缩到看不清。
+	const mmdSize = () => {
+		document.querySelectorAll<HTMLElement>("pre.mermaid").forEach((pre) => {
+			const svg = pre.querySelector("svg");
+			if (!svg || !svg.viewBox?.baseVal?.width) return;
+			const w = Math.ceil(svg.viewBox.baseVal.width);
+			const h = Math.ceil(svg.viewBox.baseVal.height);
+			if (!w || !h) return;
+			if (svg.getAttribute("width") === String(w) && svg.getAttribute("height") === String(h)) return;
+			svg.removeAttribute("style");
+			svg.setAttribute("width", String(w));
+			svg.setAttribute("height", String(h));
+		});
+	};
+
+	let mmdTimer = 0;
+	const mmdQueue = () => {
+		window.clearTimeout(mmdTimer);
+		mmdTimer = window.setTimeout(mmdSize, 80);
+	};
+
+	mmdSize();
+	document.addEventListener("astro:page-load", mmdQueue);
+	document.addEventListener("astro:after-swap", mmdQueue);
+	window.addEventListener("swup:page:view", mmdQueue);
+
+	new MutationObserver(mmdQueue).observe(document.documentElement, {
+		subtree: true,
+		childList: true,
+		attributes: true,
+		attributeFilter: ["data-processed"],
+	});
+</script>

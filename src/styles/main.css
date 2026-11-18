@@ -150,3 +150,69 @@
     }
   }
 }
+/* ── Mermaid ────────────────────────────────────────────────────────────────
+ * 桥接 token：把博客的设计变量收敛成 mermaid 图表能消费的一组语义色。
+ * mermaid 的 themeCSS（src/plugins/mermaid-theme.js）只引用这组变量，
+ * 因此换深浅色、换主题色都不需要重新渲染图表。
+ */
+:root {
+    --mmd-node-bg: color-mix(in oklch, var(--primary) 8%, var(--card-bg));
+    --mmd-node-border: color-mix(in oklch, var(--primary) 55%, transparent);
+    --mmd-cluster-bg: color-mix(in oklch, var(--primary) 5%, var(--card-bg));
+    --mmd-cluster-border: color-mix(in oklch, var(--primary) 20%, transparent);
+    --mmd-line: color-mix(in oklch, var(--primary) 25%, var(--deep-text));
+    --mmd-label: rgba(0, 0, 0, 0.86);
+    --mmd-muted: rgba(0, 0, 0, 0.62);
+}
+
+:root.dark {
+    --mmd-node-bg: color-mix(in oklch, var(--primary) 22%, var(--card-bg));
+    --mmd-node-border: color-mix(in oklch, var(--primary) 55%, transparent);
+    --mmd-cluster-bg: color-mix(in oklch, var(--primary) 12%, var(--card-bg));
+    --mmd-cluster-border: color-mix(in oklch, var(--primary) 26%, transparent);
+    --mmd-line: color-mix(in oklch, var(--primary) 30%, rgba(255, 255, 255, 0.5));
+    --mmd-label: rgba(255, 255, 255, 0.9);
+    --mmd-muted: rgba(255, 255, 255, 0.66);
+}
+
+/* 图表容器：宽图保持原始尺寸并可横向滚动，窄图居中。 */
+.prose pre.mermaid {
+    display: block !important;
+    min-height: 0 !important;
+    margin: 2rem 0 !important;
+    padding: 0.25rem 0 0.75rem !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: var(--radius-large);
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-color) transparent;
+}
+
+/* 未渲染前的骨架屏：默认注入的是写死的浅灰渐变，换成主题色。 */
+.prose pre.mermaid:not([data-processed]) {
+    background: linear-gradient(90deg, var(--btn-regular-bg) 25%, var(--btn-regular-bg-hover) 50%, var(--btn-regular-bg) 75%) !important;
+    background-size: 200% 100%;
+    border-radius: var(--radius-large);
+}
+
+.prose pre.mermaid[data-processed] {
+    background: transparent !important;
+    animation: none !important;
+}
+
+.prose pre.mermaid svg {
+    display: block;
+    margin: 0 auto;
+    max-width: none;
+    height: auto;
+}
+
+/* 窄屏下让宽图从左侧开始读，避免被居中的滚动条切掉开头。 */
+@media (max-width: 768px) {
+    .prose pre.mermaid svg {
+        margin: 0;
+    }
+}
