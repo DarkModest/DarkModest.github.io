@@ -2,6 +2,7 @@
 title: 机器学习 笔记
 published: 2026-09-23
 description: Notes about machine learning.
+tags: [Notes]
 category: Notes
 draft: false
 ---

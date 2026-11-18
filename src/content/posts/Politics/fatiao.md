@@ -1,6 +1,7 @@
 ---
 title: 法条
 published: 2025-04-10
+description: 劳动者权利与义务相关的法律条文要点整理（第七课 做个明白的劳动者）。
 tags: [Politics]
 category: Notes
 draft: false

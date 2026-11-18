@@ -1,6 +1,7 @@
 ---
 title: YZZX 集训笔记 Day3
 published: 2024-11-24
+description: YZZX 集训 Day3：树上问题笔记，重点整理树的直径的两种求法。
 tags: [OI]
 category: Notes
 draft: false

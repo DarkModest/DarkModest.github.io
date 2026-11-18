@@ -1,6 +1,7 @@
 ---
 title: 政治选必一 35 条速记
 published: 2025-04-21
+description: 政治选必一《当代国际政治与经济》35 条速记要点整理。
 tags: [Politics]
 category: Notes
 draft: false

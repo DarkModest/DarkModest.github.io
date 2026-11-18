@@ -1,6 +1,7 @@
 ---
 title: YZZX 集训笔记 Day1
 published: 2024-11-22
+description: YZZX 集训 Day1：图论专项（一）模拟赛，拓扑序唯一性、反向建图 BFS 等题目记录。
 tags: [OI]
 category: Notes
 draft: false

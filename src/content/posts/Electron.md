@@ -2,6 +2,7 @@
 title: Electron 入门
 published: 2026-08-19
 description: Introduction to Electron.
+tags: [Notes]
 category: Notes
 draft: false
 ---

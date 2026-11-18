@@ -1,6 +1,7 @@
 ---
 title: YZZX 集训笔记 Day7
 published: 2024-11-28
+description: YZZX 集训 Day7：USACO Bessie's Interview S 等题目的思路与实现记录。
 tags: [OI]
 category: Notes
 draft: false

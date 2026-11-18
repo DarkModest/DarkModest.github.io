@@ -1,6 +1,7 @@
 ---
 title: YZZX 集训笔记 Day2
 published: 2024-11-23
+description: YZZX 集训 Day2：最小生成树（Kruskal）等算法课堂笔记。
 tags: [OI]
 category: Notes
 draft: false

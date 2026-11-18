@@ -1,6 +1,7 @@
 ---
 title: YZZX 集训笔记 Day4
 published: 2024-11-25
+description: YZZX 集训 Day4：模拟赛（植物收集、最美子序列等）与杂题选讲记录。
 tags: [OI]
 category: Notes
 draft: false
