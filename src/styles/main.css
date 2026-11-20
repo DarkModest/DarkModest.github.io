@@ -184,6 +184,8 @@
     background: transparent !important;
     border: none !important;
     border-radius: var(--radius-large);
+    /* pre 默认是等宽字体，图表文字会继承它；改成继承正文的 sans 栈。 */
+    font-family: inherit;
     overflow-x: auto;
     overflow-y: hidden;
     overscroll-behavior-x: contain;
